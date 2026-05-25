@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
     {
         // Add a test user
         $user = new User();
-        $user->setEmail('admin@test.com');
+        $user->setEmail('AmouriChaymae@test.com');
         $user->setFirstName('Chaymae');
         $user->setLastName('Amouri');
         $user->setRoles(['ROLE_ADMIN']);
