@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products - Our Store{% endblock %}
+
+{% block body %}
+    <!-- Products Section -->
+    <div class="container my-5">
+        <h1 class="mb-4">Our Products</h1>
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {# Boucle sur chaque produit passé par le MainController #}
+            {% for product in products %}
+            <!-- Product -->
+            <div class="col">
+                <div class="card h-100 shadow-sm"> {# Ajout d'une ombre légère (shadow-sm) pour le style #}
+                    <img src="{{ asset('assets/images/item.png') }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        {# Vérifie si le produit appartient à une catégorie pour afficher le badge #}
+                        {% if product.category %}
+                            {# Changement de bg-primary à bg-info #}
+                            <span class="badge bg-info mb-2">{{ product.category.name }}</span>
+                        {% endif %}
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text fw-bold text-success">${{ product.price }}</p>
+                        {# Changement de btn-outline-primary à btn-outline-info #}
+                        <a href="{{ path('app_product_details', {id: product.id}) }}" class="btn btn-outline-info">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
